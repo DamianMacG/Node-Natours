@@ -3,6 +3,9 @@ const express = require("express");
 
 const app = express();
 
+//Middleware
+app.use(express.json());
+
 // app.get("/", (req, res) => {
 //   res
 //     .status(200)
@@ -22,10 +25,16 @@ const x = JSON.parse(
 app.get("/api/v1/tours", (req, res) => {
   res.status(200).json({
     status: "success",
+    results: x.length,
     data: {
       tours: x,
     },
   });
+});
+
+app.post("/api/v1/tours", (req, res) => {
+  console.log(req.body);
+  res.send("Done");
 });
 
 const port = 3000;
