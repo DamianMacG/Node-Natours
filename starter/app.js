@@ -3,7 +3,7 @@ const express = require("express");
 
 const app = express();
 
-// Middleware
+// Middleware is a function that receives the request and response objects - Executes code in order so placement is important
 app.use(express.json());
 
 const tours = JSON.parse(
@@ -104,6 +104,7 @@ const deleteTour = (req, res) => {
 // app.patch("/api/v1/tours/:id", updateTour);
 // app.delete("/api/v1/tours/:id", deleteTour);
 
+// Does the same as above commented out code
 app.route("/api/v1/tours").get(getAllTours).post(createTour);
 
 app
