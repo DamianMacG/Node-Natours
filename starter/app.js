@@ -36,6 +36,7 @@ app.get("/api/v1/tours/:id", (req, res) => {
   // Below:  you could also multiply req.params.id * 1 - a JS trick
   const id = parseInt(req.params.id);
 
+  // Also below you could use - if (!tour)
   if (id > tours.length) {
     return res.status(404).json({
       status: "fail",
@@ -70,6 +71,43 @@ app.post("/api/v1/tours", (req, res) => {
       });
     }
   );
+});
+
+// PUT - Generally for updating entire object
+// PATCH - Updates only specific properties
+
+app.patch("/api/v1/tours/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  if (id > tours.length) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Invalid ID",
+    });
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      tour: "----Updated Tour----",
+    },
+  });
+});
+
+app.delete("/api/v1/tours/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  if (id > tours.length) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Invalid ID",
+    });
+  }
+
+  res.status(204).json({
+    status: "success",
+    data: null,
+  });
 });
 
 const port = 3000;
