@@ -6,6 +6,7 @@ const app = express();
 // Middleware is a function that receives the request and response objects - Executes code in order so placement is important
 app.use(express.json());
 
+// Place this in different places in code below while testing on postman to show placement is important
 app.use((req, res, next) => {
   console.log("Helloooo for the middleware");
   next();
