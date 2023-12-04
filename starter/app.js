@@ -7,7 +7,6 @@ const app = express();
 
 // MIDDLEWARE - is a function that receives the request and response objects - Executes code in order so placement is important
 
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
