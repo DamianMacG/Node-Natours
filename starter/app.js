@@ -1,14 +1,19 @@
 const fs = require("fs");
 const express = require("express");
+const morgan = require("morgan");
 
 const app = express();
 
+// MIDDLEWARE
+
 // Middleware is a function that receives the request and response objects - Executes code in order so placement is important
+app.use(morgan("dev"));
 app.use(express.json());
 
-// Place this in different places in code below while testing on postman to show placement is important
+// Custome middleware - Place this in different places in code below while testing on postman to show placement is important
 app.use((req, res, next) => {
   console.log("Helloooo for the middleware");
+  // Always call next() at the end
   next();
 });
 
@@ -20,6 +25,8 @@ app.use((req, res, next) => {
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
+
+// ROUTE HANDLERS
 
 const getAllTours = (req, res) => {
   console.log(req.requestTime);
@@ -118,6 +125,9 @@ const deleteTour = (req, res) => {
 // app.delete("/api/v1/tours/:id", deleteTour);
 
 // Does the same as above commented out code
+
+//ROUTES
+
 app.route("/api/v1/tours").get(getAllTours).post(createTour);
 
 app
@@ -126,6 +136,7 @@ app
   .patch(updateTour)
   .delete(deleteTour);
 
+// START SERVER
 const port = 3000;
 app.listen(port, () => {
   console.log(`App running on port ${port}...`);
