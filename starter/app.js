@@ -11,11 +11,11 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Custom middleware - Place this in different places in code below while testing on postman to show placement is important
-app.use((req, res, next) => {
-  console.log("Hello for the middleware");
-  // Always call next() at the end
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log("Hello for the middleware");
+//   // Always call next() at the end
+//   next();
+// });
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
@@ -167,13 +167,9 @@ app
   .patch(updateTour)
   .delete(deleteTour);
 
-app.route("api/v1/users").get(getAllUsers).post(createUser);
+app.route("/api/v1/users").get(getAllUsers).post(createUser);
 
-app
-  .route("api/v1/users/:id")
-  .get(getUser)
-  .patch(updateUser)
-  .delete(deleteUser);
+app.route("/api/v1/users/:id").get(getUser).patch(updateUser).delete(deleteUser);
 
 // START SERVER
 const port = 3000;
