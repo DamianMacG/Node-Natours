@@ -8,6 +8,7 @@ const app = express();
 // MIDDLEWARE - is a function that receives the request and response objects - Executes code in order so placement is important
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
 
 // ROUTES
 app.use("/api/v1/tours", tourRouter);
