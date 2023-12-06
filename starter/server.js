@@ -37,7 +37,24 @@ const tourSchema = new mongoose.Schema({
 });
 
 // Capital first letter for models
-const Tour = mongoose.model('Tour', tourSchema)
+const Tour = mongoose.model("Tour", tourSchema);
+
+// Instance of Tour model above
+const testTour = new Tour({
+  name: "The Forest Hiker",
+  rating: 4.7,
+  price: 497,
+});
+
+// Saves document to the database
+testTour
+  .save()
+  .then((document) => {
+    console.log(document);
+  })
+  .catch((err) => {
+    console.log("ERROR IN CATCH ---> ", err);
+  });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
