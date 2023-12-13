@@ -23,7 +23,9 @@ mongoose
 
 // Read JSON file
 
-const tours = JSON.parse(fs.readFileSync("tours-simple.json", "utf-8"));
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/tours-simple.json`, "utf-8")
+);
 
 // Import data in DB
 
@@ -34,6 +36,7 @@ const importData = async () => {
   } catch (err) {
     console.log(err);
   }
+  process.exit();
 };
 
 // Delete all data from DB
@@ -45,4 +48,13 @@ const deleteData = async () => {
   } catch (err) {
     console.log(err);
   }
+  process.exit();
 };
+
+if (process.argv[2] === "--import") {
+  importData();
+} else if (process.argv[2] === "--delete") {
+  deleteData();
+}
+
+console.log(process.argv);
