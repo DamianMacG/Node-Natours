@@ -31,7 +31,7 @@ exports.getAllTours = async (req, res) => {
       query = query.select("-__v");
     }
 
-    // Pagination
+    // 4) Pagination
     // Convert string to a number by * 1, then default value
     const page = req.query.page * 1 || 1;
     const limit = req.query.limit * 1 || 100;
