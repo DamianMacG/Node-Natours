@@ -47,13 +47,6 @@ exports.getAllTours = async (req, res) => {
     // EXECUTE QUERY
     const tours = await query;
 
-    // Mongoose filtering method
-    // const query = await Tour.find()
-    //   .where("duration")
-    //   .equals(5)
-    //   .where("difficulty")
-    //   .equals("easy");
-
     // SEND RESPONSE
     res.status(200).json({
       status: "success",
