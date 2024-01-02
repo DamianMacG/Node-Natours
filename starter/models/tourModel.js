@@ -75,6 +75,17 @@ tourSchema.pre("save", function (next) {
   next();
 });
 
+// tourSchema.pre("save", function (next) {
+//   console.log("Will save document...");
+//   next();
+// });
+
+// //Has access to the document just posted i.e. doc
+// tourSchema.post("save", function (doc, next) {
+//   console.log(doc);
+//   next();
+// });
+
 // Capital first letter for models
 const Tour = mongoose.model("Tour", tourSchema);
 
