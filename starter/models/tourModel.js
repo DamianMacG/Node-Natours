@@ -41,7 +41,7 @@ const tourSchema = new mongoose.Schema(
     description: {
       type: String,
       trim: true,
-      required: [true, "A tour must have a description"],
+      // required: [true, "A tour must have a description"],
     },
     imageCover: {
       type: String,
@@ -63,6 +63,11 @@ const tourSchema = new mongoose.Schema(
 
 tourSchema.virtual("durationWeeks").get(function () {
   return this.duration / 7;
+});
+
+//Document Middleware: runs before .save() and .create()
+tourSchema.pre("save", function () {
+  console.log(this);
 });
 
 // Capital first letter for models
