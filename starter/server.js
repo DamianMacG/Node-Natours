@@ -17,7 +17,7 @@ mongoose
     // useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("---------- SUCCESS!!! ----------");
+    console.log("---------- Connected to the DB! ----------");
   });
 
 const port = process.env.PORT || 3000;
