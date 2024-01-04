@@ -40,7 +40,7 @@ module.exports = (err, req, res, next) => {
     sendErrorDev(err, res);
   } else if (process.env.NODE_ENV === "production") {
     let error = { ...err };
-
+// Must remain err.name as above doesn't transfer name key
     if (err.name === "CastError") error = handleCastErrorDB(error);
 
     sendErrorProd(error, res);
