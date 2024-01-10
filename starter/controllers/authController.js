@@ -24,16 +24,18 @@ exports.signUp = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.login = (req, res, next) => {
+exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-   return next(new AppError("Please provide email and password", 400));
+    return next(new AppError("Please provide email and password", 400));
   }
+
+  const user = User.findOne({ email }).select("+password");
 
   const token = "";
   res.status(200).json({
     status: "success",
     token,
   });
-};
+});
