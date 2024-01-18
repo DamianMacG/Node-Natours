@@ -107,3 +107,14 @@ exports.restrictTo = (...roles) => {
     next();
   };
 };
+
+exports.forgotPassword = (req, res, next) => {
+  // 1) Get user based on POSTed email
+
+  // 2) Get the random token
+
+  // 3) Send it to user's email
+  
+};
+
+exports.resetPassword = (req, res, next) => {};
