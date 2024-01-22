@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
     // so it's not shown in output
-    select: false
+    select: false,
   },
 });
 
@@ -67,6 +67,12 @@ userSchema.pre("save", function (next) {
 
   // - 1000 to make sure token has always been created after
   this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
+userSchema.pre(/^find/, function (next) {
+  // this points to the current query
+  this.find({ active: { $ne: false } });
   next();
 });
 
