@@ -17,12 +17,12 @@ const reviewSchema = new mongoose.Schema(
     },
     tour: {
       type: mongoose.Schema.ObjectId,
-      ref: "Tour",
+      ref: "tour",
       required: [true, "Review must belong to a Tour!"],
     },
     user: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
+      ref: "user",
       required: [true, "Review must belong to a User!"],
     },
   },
