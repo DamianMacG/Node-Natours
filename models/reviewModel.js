@@ -19,6 +19,11 @@ const reviewSchema = new mongoose.Schema({
     ref: "Tour",
     required: [true, "Review must belong to a Tour!"],
   },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: [true, "Review must belong to a User!"],
+  },
 });
 
 const Review = mongoose.model("Review", reviewSchema);
