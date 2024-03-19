@@ -71,6 +71,5 @@ exports.createUser = (req, res) => {
     message: "This route is not defined yet",
   });
 };
-
 exports.updateUser = factory.updateOne(User);
 exports.deleteUser = factory.deleteOne(User);
