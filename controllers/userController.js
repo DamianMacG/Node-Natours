@@ -59,16 +59,12 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getUser = (req, res) => {
-  res.status(500).json({
-    status: "error",
-    message: "This route is not defined yet",
-  });
-};
+exports.getUser = factory.getOne(User);
+
 exports.createUser = (req, res) => {
   res.status(500).json({
     status: "error",
-    message: "This route is not defined yet",
+    message: "Please use Signup instead - This route is not defined",
   });
 };
 exports.updateUser = factory.updateOne(User);
