@@ -46,9 +46,11 @@ exports.createOne = (Model) =>
     });
   });
 
-exports.getOne = (Model, popOptions) => {
+exports.getOne = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findById(req.params.id).populate("reviews");
+    let query = Model.findById(req.params.id);
+    if (popOptions) query = query.populate(popOptions);
+    const doc = await query;
 
     if (!doc) {
       return next(new AppError("No document found with that ID", 404));
@@ -60,4 +62,3 @@ exports.getOne = (Model, popOptions) => {
       },
     });
   });
-};
