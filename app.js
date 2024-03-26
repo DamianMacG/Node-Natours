@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
@@ -9,12 +10,15 @@ const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
-const reviewRouter = require('./routes/reviewRoutes')
+const reviewRouter = require("./routes/reviewRoutes");
 
 const app = express();
 
-// (GLOBAL) MIDDLEWARE - is a function that receives the request and response objects - Executes code in order, so placement is important
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
+// (GLOBAL) MIDDLEWARE - is a function that receives the request and response objects - Executes code in order, so placement is important
+app.use(express.static(path.join(__dirname, "public")));
 // Security HTTP headers
 app.use(helmet());
 
@@ -55,7 +59,7 @@ app.use(
 );
 
 // Serving static files
-app.use(express.static(`${__dirname}/public`));
+// app.use(express.static(`${__dirname}/public`));
 
 // Test middleware
 app.use((req, res, next) => {
@@ -65,6 +69,10 @@ app.use((req, res, next) => {
 });
 
 // ROUTES
+app.get('/', (req, res) => {
+  res.status(200).render('base')
+})
+
 app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reviews", reviewRouter);
