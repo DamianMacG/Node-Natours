@@ -1,6 +1,6 @@
-# Natours
+# Nature Adventures Tours
 
-Natours is a web application that allows users to discover and book unique travel experiences. Whether you're seeking adventurous hikes, tranquil retreats, or cultural tours, Natours offers a diverse range of options to explore.
+Nature Adventures Tours ours is a web application that allows users to discover and book unique travel experiences. Whether you're seeking adventurous hikes, tranquil retreats, or cultural tours, NATours offers a diverse range of options to explore.
 
 ## What I've Learned and Built
 
@@ -20,8 +20,8 @@ Natours is a web application that allows users to discover and book unique trave
 
 ## Features
 
-- **User Authentication**: Sign up and log in securely to your Natours account.
-- **Browse Tours**: Discover a wide selection of travel experiences curated by Natours.
+- **User Authentication**: Sign up and log in securely to your NATours account.
+- **Browse Tours**: Discover a wide selection of travel experiences curated by NATours.
 - **Book Experiences**: Reserve your desired tours hassle-free.
 - **Secure Payments**: Safely complete transactions using our payment gateway.
 - **User Profiles**: Manage your bookings and personal information conveniently.
